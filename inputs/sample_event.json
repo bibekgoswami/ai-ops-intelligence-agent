@@ -1,0 +1,11 @@
+{
+  "service": "checkout-service",
+  "error_rate": "18%",
+  "latency_ms": 2400,
+  "region": "ap-south-1",
+  "last_deploy": "2 hours ago",
+  "symptoms": [
+    "payment failures",
+    "timeout errors"
+  ]
+}
