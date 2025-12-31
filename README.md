@@ -1,204 +1,105 @@
-# 🧠 AI Ops Agent (MVP)
+# 🚀 AI Ops Intelligence Agent
 
-### Lightweight AI-driven operations intelligence for modern SaaS & e-commerce teams
+An **AI-powered Operations Intelligence Agent** designed to assist engineering and SRE teams in **analyzing production incidents**, assessing impact, and generating **actionable remediation guidance** using LLMs.
 
----
-
-## 🚨 The Problem
-
-Growing engineering teams face **operational issues every day**:
-
-- Sudden error spikes after deployments  
-- Increased latency in specific regions  
-- Payment or checkout failures  
-- Alert fatigue with no clear action items  
-
-Most teams either:
-- React manually and late  
-- Depend on static alerts with no context  
-- Over-invest in heavy enterprise tooling  
-
-👉 **The real gap:**  
-Teams don’t lack alerts — they lack **decision intelligence**.
+This project focuses on **practical Ops intelligence**, not generic chatbots.
 
 ---
 
-## ✅ What This AI Ops Agent Does
+## 🧠 What This Agent Does
 
-This project is a **minimal, focused AI Operations Agent** that:
+Given a production incident or operational event, the agent:
 
-- Analyzes operational events (errors, latency, deploy signals)
-- Reasons like a **senior operations engineer**
-- Identifies:
-  - What is going wrong
-  - Severity level (LOW / MEDIUM / HIGH)
-  - Possible root causes
-  - Recommended next actions
-- Produces **structured, decision-ready output** (logs only)
+- ✅ Diagnoses the issue using structured reasoning  
+- ✅ Assesses **severity and blast radius**
+- ✅ Generates **root cause hypotheses** (not guesses)
+- ✅ Suggests **actionable remediation steps**
+- ✅ Responds in a format suitable for real Ops workflows  
 
-⚠️ **Important:**  
-This MVP intentionally **does not execute automation**.  
-It focuses on **accurate reasoning and recommendations first**.
+Built for environments where **partial signals, noisy alerts, and time pressure** are the norm.
 
 ---
 
-## 🧩 Why This Matters
+## 🏗️ Architecture Overview
 
-Most automation tools:
-- Trigger actions blindly
-- Lack system-level context
-- Create more noise than clarity
+**Core components:**
 
-This agent acts as a **thinking layer** between:
-> Raw system signals → Human or automated actions
+- **Ops Intelligence Agent**  
+  Encapsulates senior-level operational reasoning and decision-making logic.
 
-That makes it:
-- Safer
-- Explainable
-- Easier to trust
-- Easier to extend
+- **Task Orchestration (CrewAI)**  
+  Coordinates analysis steps in a deterministic, inspectable flow.
+
+- **Structured Inputs**  
+  Incident context is provided as structured input, mimicking real-world alert payloads.
+
+- **LLM-backed Reasoning**  
+  Uses LLMs for synthesis, prioritization, and hypothesis generation — not blind automation.
 
 ---
 
-## 📌 Example Input
+## 🧩 Project Structure
 
-```json
-{
-  "service": "checkout-service",
-  "error_rate": "18%",
-  "latency_ms": 2400,
-  "region": "ap-south-1",
-  "last_deploy": "2 hours ago",
-  "symptoms": [
-    "payment failures",
-    "timeout errors"
-  ]
-}
+```
+ai-ops-intelligence-agent/
+├── agent/          # Ops agent definition & prompt logic
+├── task/           # Incident analysis tasks
+├── inputs/         # Sample incident payloads
+├── crew.py         # Agent-task orchestration
+├── run.py          # Execution entry point
+└── README.md
 ```
 
 ---
 
-## 📤 Example Output (Simplified)
+## ▶️ Running the Agent
 
-```
-Issue Summary:
-Checkout service is experiencing elevated error rates and latency shortly after a recent deployment.
-
-Severity:
-HIGH
-
-Possible Root Causes:
-- Deployment introduced regression
-- Region-specific infrastructure degradation
-- Downstream payment gateway instability
-
-Recommended Actions:
-- Roll back the last deployment
-- Enable detailed error logging
-- Check payment gateway health in ap-south-1
-- Notify on-call engineer
-```
-
-This is the **exact format ops teams need** to act quickly.
-
----
-
-## 🛠️ What This MVP Is (and Is Not)
-
-### ✅ This MVP IS:
-- AI-driven operational analysis
-- Decision intelligence
-- Lightweight and fast to demo
-- Easy to understand for non-AI stakeholders
-
-### ❌ This MVP is NOT:
-- A dashboard
-- A monitoring replacement
-- A Zapier-style workflow tool
-- A black-box automation engine
-
-Those come **later**, once reasoning is trusted.
-
----
-
-## 🧱 Architecture (Intentionally Simple)
-
-- **CrewAI** for agent orchestration  
-- **Single agent** with clear responsibility  
-- **Log-only output** (no side effects)  
-- **Local execution** for fast iteration  
-
-This design keeps:
-- Costs low
-- Risk low
-- Clarity high
-
----
-
-## 🔄 How This Evolves (Future Phases)
-
-This MVP is designed to grow naturally:
-
-### Phase 2
-- API execution (rollback, alerts, tickets)
-- Slack / email notifications
-- Runbooks as tools
-
-### Phase 3
-- Multi-agent collaboration
-- Memory & historical context
-- Automated remediation (with approval gates)
-
-Clients can adopt **only what they need**.
-
----
-
-## 👥 Who This Is For
-
-- SaaS founders & CTOs  
-- E-commerce ops teams  
-- Engineering managers  
-- Companies wanting **AI-assisted ops**, not blind automation  
-
-Also suitable as:
-- A portfolio project
-- A freelance service foundation
-- A proof of AI systems thinking
-
----
-
-## ▶️ How to Run (Developer Friendly)
-
+### 1. Setup environment
 ```bash
 pip install -r requirements.txt
-export OPENAI_API_KEY=your_key_here
+```
+
+### 2. Configure API access
+```bash
+export OPENAI_API_KEY="your_api_key"
+```
+
+### 3. Run the agent
+```bash
 python run.py
 ```
 
-Output is printed directly to the console.
+---
+
+## 🎯 Use Cases
+
+- Production incident triage  
+- On-call decision support  
+- SRE & Platform Engineering workflows  
+- Ops-focused AI experimentation  
+- Agentic system design reference  
 
 ---
 
-## 🧠 Why This Approach Works
+## 🚧 Current Status
 
-Instead of asking:
-> “What action should we automate?”
-
-This project asks:
-> **“What decision should a senior engineer make here?”**
-
-That shift is what makes AI automation **useful, safe, and scalable**.
+This is an **early-stage but functional MVP**, focused on:
+- Correct reasoning
+- Clear outputs
+- Ops relevance
 
 ---
 
-## 📌 Final Note
+## 👨‍💻 Author
 
-This project is intentionally minimal — by design.
+**Bibek Jyoti Goswami**  
+Backend Tech Lead | Distributed Systems | Agentic AI for Ops & Reliability  
 
-It demonstrates:
-- Clear problem framing
-- AI agent reasoning
-- Production-ready thinking
-- Real-world applicability
+🔗 LinkedIn: https://www.linkedin.com/in/bibek-jyoti-goswami-a16aa585/
 
-If you’re interested in extending or integrating this into real systems, this MVP is the **right starting point**.
+---
+
+## 📌 Why This Project Exists
+
+Most AI agents optimize for demos.  
+This one optimizes for **operational thinking**.
